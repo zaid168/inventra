@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from app.routers import items, inventory, transactions
+from app.routers import categories
 
 app = FastAPI(
     title="INVENTRA API",
@@ -21,3 +23,7 @@ def health_check():
         "status": "healthy"
     }
 
+app.include_router(items.router, prefix="/api")
+app.include_router(inventory.router, prefix="/api")
+app.include_router(transactions.router, prefix="/api")
+app.include_router(categories.router, prefix="/api")

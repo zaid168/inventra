@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:16
+    container_name: inventra_db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: inventra_user
+      POSTGRES_PASSWORD: inventra_dev
+      POSTGRES_DB: inventra_db
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - inventra_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U inventra_user -d inventra_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  inventra_data:
