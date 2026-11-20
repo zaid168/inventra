@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.vscode/
+
+# Environment
+.DS_Store
+
+# ML
+*.pkl
+*.joblib
+
+# Testing
+.pytest_cache/
+.coverage
